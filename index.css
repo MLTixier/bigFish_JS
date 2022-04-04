@@ -19,6 +19,10 @@ h1{
     font-family: "Bitstream Charter";
 }
 
+h2{
+    color:midnightblue;
+}
+
 footer {
     color: white;
     background-color: midnightblue;
@@ -32,3 +36,45 @@ footer {
     padding: 30px;
 }
 
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.feeder {
+    width: 70%;
+    background-color: cadetblue;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.fish-card {
+    color: midnightblue;
+    width: 90%;
+    background-color: white;
+    border: 1px solid midnightblue;
+    margin-top:30px;
+    padding:20px;
+    position: relative;
+    display:flex;
+    flex-direction: column;
+}
+
+.fish-label{
+    margin-top:20px;
+    background-color:midnightblue;
+    color: white;
+    padding: 5px;
+    display:flex;
+    flex-direction:row;
+    align-items:start;
+}
+
+.fish-description {
+margin-top:20px;
+}
