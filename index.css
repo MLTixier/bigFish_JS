@@ -72,6 +72,7 @@ h2{
     color: midnightblue;
     width: 100%;
     border: 3px solid midnightblue;
+    border-radius: 30px;
     background-color:white;
     margin-top:30px;
     padding:20px;
