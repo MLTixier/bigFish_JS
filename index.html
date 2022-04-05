@@ -12,10 +12,16 @@
 </head>
 
 <body>
-<header class="header">
-    <img src="images/logo.png" alt="logo" height="60px" width="80px">
-    <h1>Bienvenue sur Big Fish !</h1>
-    <img src="images/hamburger.png" alt="menu" height="30px">
+<header>
+    <div class="header-div">
+        <img src="images/logo.png" alt="logo" height="60px" width="80px">
+    </div>
+    <div class="header-div">
+        <h1>Bienvenue sur Big Fish !</h1>
+    </div>
+    <div class="header-div">
+        <img src="images/hamburger.png" alt="menu" height="25px">
+    </div>
 </header>
 
 <main>
@@ -23,9 +29,22 @@
         <h2>Découvrez mes beaux poissons :</h2>
         <div class="fish-card">
             <h3 class="fish-title">Poisson 1</h3>
-            <img class="fish-image" src="images/poisson.png" alt="photo poisson" width="20%">
-            <div class="fish-label">
-                <label>label poisson</label>
+            <img class="fish-image" src="images/poisson.png" alt="photo poisson">
+            <div class="label-list">
+                <label class="fish-label">label 1</label>
+                <label class="fish-label">label 2</label>
+            </div>
+            <p class="fish-description">Ce poisson nous vient de Lorem ipsum dolor sit amet. Ea dignissimos assumenda ut
+                nostrum ipsum id incidunt ipsa. At eveniet enim ad doloribus asperiores sit temporibus quos eos minus
+                eligendi ut inventore nesciunt a assumenda vero. Qui consequatur quia nam eligendi minus nam quia
+                officiis. Est sunt quis eos internos quia ut laborum nobis sed temporibus unde in quidem porro. </p>
+        </div>
+        <div class="fish-card">
+            <h3 class="fish-title">Poisson 2</h3>
+            <img class="fish-image" src="images/poisson.png" alt="photo poisson">
+            <div class="label-list">
+                <label class="fish-label">label 1</label>
+                <label class="fish-label">label 2</label>
             </div>
             <p class="fish-description">Ce poisson nous vient de Lorem ipsum dolor sit amet. Ea dignissimos assumenda ut
                 nostrum ipsum id incidunt ipsa. At eveniet enim ad doloribus asperiores sit temporibus quos eos minus
@@ -35,7 +54,7 @@
     </div>
 </main>
 
-<footer class="footer">
+<footer>
     <p>Copyright 2022</p>
 </footer>
 </body>
