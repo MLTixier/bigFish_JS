@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="carousel.css" />
     <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     <script src="script.js"></script>
 </head>
 
@@ -25,11 +26,28 @@
 </header>
 
 <main>
-    <div class="feeder">
+
+    <div class="gallery">
+        <div class="gallery-container">
+            <img class="gallery-item" src="images/fish1.jpg">
+            <img class="gallery-item" src="images/poisson.png">
+            <img class="gallery-item gallery-item-1" src="images/poisson.png" data-index="1">
+            <img class="gallery-item gallery-item-2" src="images/poisson.png" data-index="2">
+            <img class="gallery-item gallery-item-3" src="images/poisson.png" data-index="3">
+            <img class="gallery-item gallery-item-4" src="images/poisson.png" data-index="4">
+            <img class="gallery-item gallery-item-5" src="images/poisson.png" data-index="5">
+        </div>
+        <div class="gallery-controls"></div>
+    </div>
+
+    <script src="carousel.js"></script>
+
+    <div class="feeder" id="feeder">
         <h2>Découvrez mes beaux poissons...</h2>
         <div class="picto-refresh">
-            <img src="images/refresh.png" alt="refresh" width="40px;">
+            <img id="refresh" src="images/refresh.png" alt="refresh" width="40px;">
         </div>
+
         <div class="fish-card">
             <h3 class="fish-title">Poisson 1</h3>
             <img class="fish-image" src="images/poisson.png" alt="photo poisson">
@@ -42,6 +60,7 @@
                 eligendi ut inventore nesciunt a assumenda vero. Qui consequatur quia nam eligendi minus nam quia
                 officiis. Est sunt quis eos internos quia ut laborum nobis sed temporibus unde in quidem porro. </p>
         </div>
+
         <div class="fish-card">
             <h3 class="fish-title">Poisson 2</h3>
             <img class="fish-image" src="images/poisson.png" alt="photo poisson">
@@ -54,6 +73,7 @@
                 eligendi ut inventore nesciunt a assumenda vero. Qui consequatur quia nam eligendi minus nam quia
                 officiis. Est sunt quis eos internos quia ut laborum nobis sed temporibus unde in quidem porro. </p>
         </div>
+
     </div>
 </main>
 
