@@ -49,8 +49,8 @@ h1{
 h2{
     color:midnightblue;
     text-align:center;
+    margin-bottom:40px;
 }
-
 
 .feeder {
     width: 70%;
@@ -59,6 +59,13 @@ h2{
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    position:relative;
+}
+
+.picto-refresh{
+    position:absolute;
+    right:20px;
+    top:60px;
 }
 
 .fish-card {
@@ -114,5 +121,8 @@ margin-top:20px;
     }
     .fish-image{
         width:80%;
+    }
+    h2{
+        margin-bottom:10px;
     }
 }
