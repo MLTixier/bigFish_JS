@@ -74,6 +74,8 @@ h2{
 
 .fish-image{
     width:40%;
+    border: 1px solid black;
+    margin-block:10px;
 }
 
 .label-list{
@@ -107,7 +109,10 @@ margin-top:20px;
     .feeder {
         width: 100%;
     }
+    .fish-card{
+        align-items:center;
+    }
     .fish-image{
-        width:100%;
+        width:80%;
     }
 }
