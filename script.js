@@ -1,24 +1,26 @@
+$_request
+
 $(document).ready(function(){
 
-    // let jsonDatas="";
-    //
-    // let apiRequest = $.ajax({
-    //     url: "https://www.fishwatch.gov/api/species.json",
-    //     method: "GET",
-    //     dataType: "json",
-    // })
-    //
-    // apiRequest.fail(function (error) {
-    //     alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error));
-    // })
-    //
-    // apiRequest.done(function (response) {
-    //     // jsonDatas = JSON.stringify(response);
-    //     jsonDatas = response;
-    //     //$("div.feeder").append(jsonDatas);
-    // })
-    //
-    // console.log(jsonDatas);
+    let jsonDatas="";
+
+    let apiRequest = $.ajax({
+        url: "https://www.fishwatch.gov/api/species.json",
+        method: "GET",
+        dataType: "json",
+    })
+
+    apiRequest.fail(function (error) {
+        alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error));
+    })
+
+    apiRequest.done(function (response) {
+        // jsonDatas = JSON.stringify(response);
+        jsonDatas = response;
+        //$("div.feeder").append(jsonDatas);
+    })
+
+    console.log(jsonDatas);
 
     //affichage d'un article :
     function hydratePoisson(i) {
