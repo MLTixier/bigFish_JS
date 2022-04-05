@@ -49,7 +49,7 @@ h1{
 h2{
     color:midnightblue;
     text-align:center;
-    margin-bottom:40px;
+    margin-bottom:70px;
 }
 
 .feeder {
@@ -64,36 +64,37 @@ h2{
 
 .picto-refresh{
     position:absolute;
-    right:20px;
-    top:60px;
+    right:180px;
+    top:710px;
 }
 
-.fish-card {
+#ajax div {
     color: midnightblue;
     width: 100%;
     border: 3px solid midnightblue;
     border-radius: 30px;
     background-color:white;
     margin-top:30px;
-    padding:20px;
+    padding:40px;
     display:flex;
     flex-direction: column;
 }
 
-.fish-image{
+#ajax img{
     width:40%;
     border: 1px solid black;
     margin-block:10px;
 }
 
-.label-list{
+#ajax span{
     display:flex;
     flex-direction:row;
     justify-content: start;
     align-items:center;
+    margin-bottom:10px;
 }
 
-.fish-label{
+#ajax label{
     background-color:midnightblue;
     color: white;
     display:flex;
