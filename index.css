@@ -68,7 +68,7 @@ h2{
     top:710px;
 }
 
-#ajax div {
+.fish-card{
     color: midnightblue;
     width: 100%;
     border: 3px solid midnightblue;
@@ -80,13 +80,13 @@ h2{
     flex-direction: column;
 }
 
-#ajax img{
+.fish-image{
     width:40%;
     border: 1px solid black;
     margin-block:10px;
 }
 
-#ajax span{
+.label-list{
     display:flex;
     flex-direction:row;
     justify-content: start;
@@ -94,7 +94,7 @@ h2{
     margin-bottom:10px;
 }
 
-#ajax label{
+.fish-label{
     background-color:midnightblue;
     color: white;
     display:flex;
@@ -106,6 +106,7 @@ h2{
 
 .fish-description {
 margin-top:20px;
+    margin-left:20px;
 }
 
 
