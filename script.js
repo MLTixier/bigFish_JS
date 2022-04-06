@@ -28,7 +28,7 @@ $(document).ready(function () {
                     const fishImage = document.createElement("img");
                     fishImage.src = jsonDatas[i]['Image Gallery'][0].src;
                     fishImage.alt = jsonDatas[i]['Image Gallery'][0].alt;
-                } else if (jsonDatas[i]['Image Gallery'].length == 0) {
+                } else if (jsonDatas[i]['Image Gallery'].length === 0) {
                     const fishImage = document.createElement("img");
                     fishImage.src = jsonDatas[i]['Image Gallery'].src;
                     fishImage.alt = jsonDatas[i]['Image Gallery'].alt;
@@ -53,7 +53,7 @@ $(document).ready(function () {
                 fishImage.src = jsonDatas[i]['Image Gallery'][0].src;
                 fishImage.alt = jsonDatas[i]['Image Gallery'][0].alt;
                 fishCard.appendChild(fishImage);
-            } else if (jsonDatas[i]['Image Gallery'].length == 0) {
+            } else if (jsonDatas[i]['Image Gallery'].length === 0) {
                 const fishImage = document.createElement("img");
                 fishImage.src = jsonDatas[i]['Image Gallery'].src;
                 fishImage.alt = jsonDatas[i]['Image Gallery'].alt;

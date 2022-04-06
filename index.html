@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="carousel.css" />
+    <link rel="stylesheet" href="carousel.css"/>
+    <!--    site sans Bootstrap -->
     <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
 </head>
 
@@ -27,19 +28,22 @@
 
 <main>
 
+    <!--    Carrousel-->
     <div class="gallery">
-        <div class="gallery-container" id=""carousel">
-            <img class="gallery-item" src="images/poisson.png">
-            <img class="gallery-item" src="images/poisson.png">
-            <img class="gallery-item" src="images/poisson.png">
-            <img class="gallery-item" src="images/poisson.png">
-            <img class="gallery-item" src="images/poisson.png">
+        <div class="gallery-container" id="carousel">
+            <img class="gallery-item" src="images/poisson3.jpg">
+            <img class="gallery-item" src="images/poisson4.jpg">
+            <img class="gallery-item" src="images/poisson5.jpg">
+            <img class="gallery-item" src="images/poisson6.jpg">
+            <img class="gallery-item" src="images/poisson7.jpg">
+            <img class="gallery-item" src="images/poisson8.jpg">
         </div>
         <div class="gallery-controls"></div>
     </div>
 
     <script src="carousel.js"></script>
 
+    <!--   En-tête du feeder-->
     <div class="picto-refresh">
         <img id="refresh" src="images/refresh.png" alt="refresh" width="40px;">
     </div>
@@ -47,9 +51,12 @@
     <div class="feeder" id="ajax">
         <h2>Découvrez mes beaux poissons...</h2>
 
+        <!--   Feeder en "dur"-->
         <div class="fish-card">
             <h3 class="fish-title">Beau poisson</h3>
-            <img class="fish-image" src="https://images.rtl.fr/~c/770v513/rtl/www/1294273-un-poisson-clown-illustration.jpg" alt="photo poisson">
+            <img class="fish-image"
+                 src="https://images.rtl.fr/~c/770v513/rtl/www/1294273-un-poisson-clown-illustration.jpg"
+                 alt="photo poisson">
             <span class="label-list">
                 <label class="fish-label">Wild</label>
                 <label class="fish-label">Farmed</label>
