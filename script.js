@@ -10,11 +10,13 @@ $(document).ready(function () {
         let url = "https://www.fishwatch.gov/api/species";
         fetch(url).then(res => res.json())
             .then(data => {
-                afficheTousLesPoissons(data,number);
+                afficheTousLesPoissons(data, number);
                 // afficheCarousel(data));
             })
             .catch(function () {
-                document.getElementById("errorAPI").text = "Il y a eu un problème avec votre API";
+                let msg = document.createElement("p");
+                msg.innerHTML = "Il y a eu un problème avec votre API";
+                document.getElementById("errorAPI").append(msg);
             });
 
 
@@ -119,7 +121,7 @@ $(document).ready(function () {
 
 })
 
-function show(){
+function show() {
     document.getElementById("topdown-menu").classList.replace("hidden", "visible");
 }
 
