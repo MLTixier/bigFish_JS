@@ -36,35 +36,29 @@
             <li><a href="">contact</a></li>
         </ul>
     </nav>
-
 </header>
 
 <main>
+<!--message d'erreur optionnel si bug lors de l'API-->
+    <p id="errorAPI"></p>
 
     <!--    Carrousel-->
     <div class="gallery">
-        <div class="gallery-container" id="carousel">
+        <div class="gallery-container">
             <img class="gallery-item" src="images/poisson3.jpg">
             <img class="gallery-item" src="images/poisson4.jpg">
-            <img class="gallery-item" src="images/poisson5.jpg">
-            <img class="gallery-item" src="images/poisson6.jpg">
             <img class="gallery-item" src="images/poisson7.jpg">
+            <img class="gallery-item" src="images/poisson6.jpg">
+            <img class="gallery-item" src="images/poisson5.jpg">
             <img class="gallery-item" src="images/poisson8.jpg">
         </div>
         <div class="gallery-controls"></div>
     </div>
 
-    <script src="carousel.js"></script>
-
-
     <div class="feeder" id="ajax">
 
         <!--   En-tête du feeder-->
-        <div class="picto-refresh">
-            <img id="refresh" src="images/refresh.png" alt="refresh" width="40px;">
-        </div>
-
-        <h2>Découvrez mes beaux poissons...</h2>
+            <h2>Découvrez mes derniers arrivages...</h2>
 
         <!--   Feeder en "dur"-->
         <div class="fish-card">
@@ -83,10 +77,20 @@
         </div>
 
     </div>
+
+    <h2>Rafraichissez pour voir tous mes beaux poissons !</h2>
+
+    <div class="picto-refresh">
+        <img id="refresh" src="images/refresh.png" alt="refresh" width="40px;">
+    </div>
+
 </main>
 
 <footer>
     <p>Copyright 2022</p>
 </footer>
 </body>
+
+<script src="carousel.js"></script>
+
 </html>

@@ -74,13 +74,11 @@ list-style:none;
 
 h1{
     font-size:36px;
-    font-family: "Bitstream Charter";
 }
 
 h2{
     color:midnightblue;
     text-align:center;
-    margin-bottom:70px;
 }
 
 .feeder {
@@ -94,10 +92,7 @@ h2{
 }
 
 .picto-refresh{
-    position:absolute;
-    right:10px;
-    top:40px;
-    z-index: 100;
+margin:20px;
 }
 
 .fish-card{
@@ -141,6 +136,11 @@ margin-top:20px;
     margin-left:20px;
 }
 
+#errorAPI{
+    color : white;
+    background-color : red ;
+z-index:100;
+}
 
 
 

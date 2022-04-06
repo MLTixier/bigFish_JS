@@ -8,6 +8,7 @@ class Carousel {
     this.carouselContainer = container;
     this.carouselControls = controls;
     this.carouselArray = [...items];
+    this.updateGallery();
   }
 
   // Update css classes for gallery
@@ -37,15 +38,15 @@ class Carousel {
     this.updateGallery();
   }
 
-  // Construct the carousel navigation
+  // // Construct the carousel navigation
   // setNav() {
-    // galleryContainer.appendChild(document.createElement('ul')).className = 'gallery-nav';
-
-    // this.carouselArray.forEach(item => {
-    //   const nav = galleryContainer.lastElementChild;
-    //   nav.appendChild(document.createElement('li'));
-    // }); 
-  // }s
+  //   galleryContainer.appendChild(document.createElement('ul')).className = 'gallery-nav';
+  //
+  //   this.carouselArray.forEach(item => {
+  //     const nav = galleryContainer.lastElementChild;
+  //     nav.appendChild(document.createElement('li'));
+  //   });
+  // }
 
   // Construct the carousel controls
   setControls() {
