@@ -54,6 +54,7 @@ footer {
     text:midnightblue;
     /*text-align:center;*/
     padding-inline :20px;
+    z-index: 100;
 }
 
 #topdown-menu hr {
@@ -94,8 +95,9 @@ h2{
 
 .picto-refresh{
     position:absolute;
-    right:180px;
-    top:710px;
+    right:10px;
+    top:40px;
+    z-index: 100;
 }
 
 .fish-card{
