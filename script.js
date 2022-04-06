@@ -8,7 +8,7 @@ $(document).ready(function () {
         // fonction en vanilla JS :
         let url = "https://www.fishwatch.gov/api/species";
         fetch(url).then(res => res.json())
-            .then(data=> {
+            .then(data => {
                 afficheTout(data);
                 // afficheCarousel(data));
             })
@@ -34,11 +34,11 @@ $(document).ready(function () {
     //affichage d'une carte descriptif poisson :
     function affichePoisson(i, jsonDatas) {
         const fishCard = document.createElement("div");
-        fishCard.className='fish-card';
+        fishCard.className = 'fish-card';
 
         const fishTitle = document.createElement("h3");
         fishTitle.innerHTML = jsonDatas[i]['Species Name'];
-        fishTitle.className='fish-title';
+        fishTitle.className = 'fish-title';
         fishCard.appendChild(fishTitle);
 
         if (jsonDatas[i]['Image Gallery'] != null) {
@@ -46,34 +46,34 @@ $(document).ready(function () {
                 const fishImage = document.createElement("img");
                 fishImage.src = jsonDatas[i]['Image Gallery'][0].src;
                 fishImage.alt = jsonDatas[i]['Image Gallery'][0].alt;
-                fishImage.className='fish-image';
+                fishImage.className = 'fish-image';
                 fishCard.appendChild(fishImage);
             } else if (jsonDatas[i]['Image Gallery'].length === 0) {
                 const fishImage = document.createElement("img");
                 fishImage.src = jsonDatas[i]['Image Gallery'].src;
                 fishImage.alt = jsonDatas[i]['Image Gallery'].alt;
-                fishImage.className='fish-image';
+                fishImage.className = 'fish-image';
                 fishCard.appendChild(fishImage);
             }
         } else {
             const fishImage = document.createElement("img");
             fishImage.src = "https://www.aquaportail.com/pictures1910/phones/poisson.jpg"
             fishImage.alt = "photo générique de poisson";
-            fishImage.className='fish-image';
+            fishImage.className = 'fish-image';
             fishCard.appendChild(fishImage);
         }
 
         const labelList = document.createElement("span");
         const fishLabel = document.createElement("label");
         fishLabel.innerHTML = jsonDatas[i]['Harvest Type'];
-        fishLabel.className="fish-label";
-        labelList.className="label-list";
+        fishLabel.className = "fish-label";
+        labelList.className = "label-list";
         labelList.appendChild(fishLabel);
         fishCard.appendChild(labelList);
 
         const fishDescription = document.createElement("p");
         fishDescription.innerHTML = "Description physique :" + jsonDatas[i]['Physical Description'];
-        fishDescription.className="fish-description";
+        fishDescription.className = "fish-description";
         fishCard.appendChild(fishDescription);
 
         // //méthode en jquery :
@@ -113,5 +113,8 @@ $(document).ready(function () {
 
 })
 
+function show(){
+    document.getElementById("topdown-menu").classList.replace("hidden", "visible");
+}
 
 
