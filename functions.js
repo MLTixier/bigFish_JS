@@ -80,7 +80,7 @@ function affichePoisson(json) {
     // $("#ajax").append(fishCard);
 
     //méthode en vanilla JS :
-    document.getElementById("ajax").appendChild(fishCard);
+    document.getElementById("ajax").prepend(fishCard);
 }
 
 
@@ -123,12 +123,38 @@ function show() {
 
 //affiche le résultat de la recherche au clic sur le picto search en vanilla JS :
 function search() {
-    let x = document.getElementById("search-request").value;
-    console.log(x);
+    const url = "https://www.fishwatch.gov/api/species";
+    fetch(url).then(res => res.json()).then(data => {
+        let x = document.getElementById("search-request").value;
+        let trouve = false;
+        previousFishDelete()
+        for (let json of data) {
+            if (json["Species Name"].toLowerCase().includes(x.toLowerCase())) {
+                affichePoisson(json);
+                trouve = true;
+            }
+            if (trouve == false) {
+                console.log("rien")
+            }
+        }
+    });
+
 }
 
 //affiche toutes les cartes poissons au clic sur le picto refresh en vanilla JS :
-function fishRefresh(){
+function fishRefresh() {
+    previousFishDelete()
     apiVanilla("tous");
 }
 
+//efface toutes les cartes poissons précédemment affichées
+function previousFishDelete() {
+    if ((document.getElementById("arrivage-title"))!=null){
+        let title=document.getElementById("arrivage-title");
+        title.remove();
+    }
+    let liste = document.getElementById("ajax");
+    while (liste.firstChild) {
+        liste.removeChild(liste.firstChild);
+    }
+}

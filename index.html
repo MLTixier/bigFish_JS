@@ -11,8 +11,8 @@
     <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <script src="functions.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!--    pour utiliser le code en jQuery, appeler scriptJQuery.js, sinon scriptVanilla.js.-->
-<!--    <script src="scriptJQuery.js"></script>-->
+    <!--    pour utiliser le code en jQuery, appeler scriptJQuery.js, sinon scriptVanilla.js.-->
+    <!--    <script src="scriptJQuery.js"></script>-->
     <script src="scriptVanilla.js"></script>
 
 </head>
@@ -29,7 +29,7 @@
         <img src="images/hamburger.png" alt="menu" height="25px" onclick="show()">
     </div>
 
-<!--    menu déroulant-->
+    <!--    menu déroulant-->
     <nav id="topdown-menu" class="hidden">
         <ul>
             <li><a href="">page d'accueil</a></li>
@@ -42,7 +42,7 @@
 </header>
 
 <main>
-<!--message d'erreur optionnel si bug lors de l'API-->
+    <!--message d'erreur optionnel si bug lors de l'API-->
     <p id="errorAPI"></p>
 
     <!--    Carrousel-->
@@ -58,8 +58,8 @@
         <div class="gallery-controls"></div>
     </div>
 
-    <div class="feeder" id="ajax">
-<!--barre de recherche du feeder-->
+    <div class="feeder">
+        <!--barre de recherche du feeder-->
         <div class="searchbar">
             <input type="text" placeholder="Rechercher" id="search-request"/>
             <button id="submit-search" type="submit" onclick="search()">
@@ -68,22 +68,26 @@
         </div>
 
         <!--   En-tête du feeder-->
-            <h2>Découvrez mes derniers arrivages...</h2>
+        <h2 id="arrivage-title">Découvrez mes derniers arrivages...</h2>
 
         <!--   Feeder en "dur"-->
-        <div class="fish-card">
-            <h3 class="fish-title">Beau poisson</h3>
-            <img class="fish-image"
-                 src="https://images.rtl.fr/~c/770v513/rtl/www/1294273-un-poisson-clown-illustration.jpg"
-                 alt="photo poisson">
-            <span class="label-list">
+        <div id="ajax">
+            <div class="fish-card">
+                <h3 class="fish-title">Beau poisson</h3>
+                <img class="fish-image"
+                     src="https://images.rtl.fr/~c/770v513/rtl/www/1294273-un-poisson-clown-illustration.jpg"
+                     alt="photo poisson">
+                <span class="label-list">
                 <label class="fish-label">Wild</label>
                 <label class="fish-label">Farmed</label>
             </span>
-            <p class="fish-description">Ce poisson nous vient de Lorem ipsum dolor sit amet. Ea dignissimos assumenda ut
-                nostrum ipsum id incidunt ipsa. At eveniet enim ad doloribus asperiores sit temporibus quos eos minus
-                eligendi ut inventore nesciunt a assumenda vero. Qui consequatur quia nam eligendi minus nam quia
-                officiis. Est sunt quis eos internos quia ut laborum nobis sed temporibus unde in quidem porro. </p>
+                <p class="fish-description">Ce poisson nous vient de Lorem ipsum dolor sit amet. Ea dignissimos
+                    assumenda ut
+                    nostrum ipsum id incidunt ipsa. At eveniet enim ad doloribus asperiores sit temporibus quos eos
+                    minus
+                    eligendi ut inventore nesciunt a assumenda vero. Qui consequatur quia nam eligendi minus nam quia
+                    officiis. Est sunt quis eos internos quia ut laborum nobis sed temporibus unde in quidem porro. </p>
+            </div>
         </div>
 
     </div>
