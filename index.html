@@ -81,7 +81,8 @@
                 <label class="fish-label">Wild</label>
                 <label class="fish-label">Farmed</label>
             </span>
-                <p class="fish-description">Ce poisson nous vient de Lorem ipsum dolor sit amet. Ea dignissimos
+
+                <p class="fish-description"><p style='font-weight:bold'> Description physique : </p></br>Ce poisson nous vient de Lorem ipsum dolor sit amet. Ea dignissimos
                     assumenda ut
                     nostrum ipsum id incidunt ipsa. At eveniet enim ad doloribus asperiores sit temporibus quos eos
                     minus
@@ -92,11 +93,28 @@
 
     </div>
 
-    <h2>Rafraichissez pour voir tous mes beaux poissons !</h2>
-
+    <h2 id=refresh-title">Rafraichissez pour voir tous mes beaux poissons !</h2>
     <div class="picto-refresh">
         <img id="refresh" src="images/refresh.png" alt="refresh" width="40px;" onclick="fishRefresh()">
     </div>
+
+    <h2>Ajoutez un nouveau poisson manuellement :</h2>
+    <div class="form">
+        <div>
+            <label >Nom du poisson : </label>
+            <input type="text" id="name">
+        </div>
+        <div>
+            <label >Catégorie du poisson : </label>
+            <input type="text" id="label" placeholder="Farmed / Wild / ...">
+        </div>
+        <div>
+            <label >Description du poisson :</label>
+            <textarea id="description" rows="10" cols="25"></textarea>
+        </div>
+        <button id="submitAddFish" type="button">Créer un poisson</button>
+    </div>
+
 
 </main>
 

@@ -72,7 +72,7 @@ function affichePoisson(json) {
     fishCard.appendChild(labelList);
 
     const fishDescription = document.createElement("p");
-    fishDescription.innerHTML = "Description physique :" + json['Physical Description'];
+    fishDescription.innerHTML = "<p style='font-weight:bold'> Description physique : </p></br>" + json['Physical Description'];
     fishDescription.className = "fish-description";
     fishCard.appendChild(fishDescription);
 
@@ -80,7 +80,7 @@ function affichePoisson(json) {
     // $("#ajax").append(fishCard);
 
     //méthode en vanilla JS :
-    document.getElementById("ajax").prepend(fishCard);
+    document.getElementById("ajax").appendChild(fishCard);
 }
 
 
@@ -136,9 +136,9 @@ function search() {
         }
         if (trouve == false) {
             let errormsg = document.createElement("p");
-            errormsg.innerHTML="la recherche ne correspond à aucun poisson de notre base de données";
+            errormsg.innerHTML = "la recherche ne correspond à aucun poisson de notre base de données";
             let ajax = document.getElementById("ajax");
-            errormsg.className = 'search-error' ;
+            errormsg.className = 'search-error';
             ajax.prepend(errormsg);
         }
     });
@@ -153,12 +153,23 @@ function fishRefresh() {
 
 //efface toutes les cartes poissons précédemment affichées
 function previousFishDelete() {
-    if ((document.getElementById("arrivage-title"))!=null){
-        let title=document.getElementById("arrivage-title");
+    if ((document.getElementById("arrivage-title")) != null) {
+        let title = document.getElementById("arrivage-title");
         title.remove();
     }
     let liste = document.getElementById("ajax");
     while (liste.firstChild) {
         liste.removeChild(liste.firstChild);
     }
+}
+
+//créée une carte poisson avec les champs du formulaire "fishAddForm" au clic sur le bouton.
+function createFish() {
+    previousFishDelete();
+    const json = {
+        "Species Name": document.getElementById("name").value,
+        "Physical Description": document.getElementById("description").value,
+        "Harvest Type": document.getElementById("label").value,
+    };
+    affichePoisson(json);
 }
