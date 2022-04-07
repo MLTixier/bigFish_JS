@@ -133,9 +133,13 @@ function search() {
                 affichePoisson(json);
                 trouve = true;
             }
-            if (trouve == false) {
-                console.log("rien")
-            }
+        }
+        if (trouve == false) {
+            let errormsg = document.createElement("p");
+            errormsg.innerHTML="la recherche ne correspond à aucun poisson de notre base de données";
+            let ajax = document.getElementById("ajax");
+            errormsg.className = 'search-error' ;
+            ajax.prepend(errormsg);
         }
     });
 
