@@ -12,7 +12,16 @@ document.onreadystatechange = function () {
 
     const buttonElement = document.getElementById("submitAddFish");
     buttonElement.addEventListener('click', function (event) {
-        createFish();
+        document.querySelector("#formError").innerHTML="";
+        if (validateForm()==""){
+            createFish();
+        }else{
+            let formMsg = document.createElement('p');
+            formMsg.innerHTML= validateForm();
+            formMsg.className="search-error";
+            let ancre = document.querySelector("#formError");
+            ancre.appendChild(formMsg);
+        }
     });
 };
 

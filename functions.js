@@ -173,3 +173,15 @@ function createFish() {
     };
     affichePoisson(json);
 }
+
+//vérifie les champs du formulaire "fishAddForm" et renvoie une string avec le message d'erreur.
+function validateForm() {
+    let msg="";
+    if (document.getElementById("name").value.length==0) {
+       msg+="Le champ Nom du Poisson ne doit pas être vide."
+    }
+    if (document.getElementById("description").value.length==0) {
+        msg+="Le champ Description du Poisson ne doit pas être vide."
+    }
+    return msg;
+}
