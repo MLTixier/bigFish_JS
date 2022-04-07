@@ -79,6 +79,7 @@ h1{
 h2{
     color:midnightblue;
     text-align:center;
+    margin : 15px;
 }
 
 .feeder {
@@ -91,8 +92,27 @@ h2{
     position:relative;
 }
 
+.searchbar{
+display:flex;
+    flex-direction: row;
+    background-color:midnightblue;
+    padding:2px;
+}
+
+.searchbar input{
+    font-size:16px;
+}
+
+.picto-search{
+    margin : 5px;
+}
+
+#submit-search{
+    background-color:midnightblue;
+}
+
 .picto-refresh{
-margin:20px;
+margin-bottom:10px;
 }
 
 .fish-card{
