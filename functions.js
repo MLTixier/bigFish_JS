@@ -1,6 +1,7 @@
 // fonction affiche n poissons de l'API en vanilla JS :
-function apiVanilla(nombre) {
+function apiVanilla(nombre,x) {
     const number = nombre;
+    const y = x;
     let url = "https://www.fishwatch.gov/api/species";
     fetch(url).then(function (res) {
         // console.log("res",res) //représente la réponse avec 2 attributs : body et headers. Donc ces attributs de headers : status et statusText
@@ -8,7 +9,7 @@ function apiVanilla(nombre) {
         return res.json()
     })
         .then(data => {
-            afficheNPoissons(data, number, 2, 0); //n'affiche qu'un nombre de x objets sur la 1ère page, à partir du ième numéro de la BDD
+            afficheNPoissons(data, number, y, 0); //n'affiche qu'un nombre de y objets sur la 1ère page, à partir du ième numéro de la BDD
             // afficheCarousel(data));
         })
         .catch(function (error) {
@@ -20,15 +21,16 @@ function apiVanilla(nombre) {
 }
 
 // fonction affiche n poissons de l'API en jQuery :
-function apiJQuery(nombre) {
+function apiJQuery(nombre,x) {
     const number = nombre;
+    const y = x ;
     $.ajax({
         url: "https://www.fishwatch.gov/api/species",
         method: "GET",
         dataType: "json",
     })
         .done(function (response) {
-            afficheNPoissons(response, number, 2, 0);
+            afficheNPoissons(response, number, y, 0);
             // afficheCarousel(response);
         })
         .fail(function (error) {
@@ -192,7 +194,8 @@ function search() {
 //affiche toutes les cartes poissons au clic sur le picto refresh en vanilla JS :
 function fishRefresh() {
     previousFishDelete()
-    apiVanilla("tous");
+    let x = document.getElementById("nbPoissonsParPage").placeholder;
+    apiVanilla("tous",x);
 }
 
 //efface toutes les cartes poissons précédemment affichées
