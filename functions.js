@@ -4,7 +4,7 @@ function apiVanilla(nombre) {
     let url = "https://www.fishwatch.gov/api/species";
     fetch(url).then(res => res.json())
         .then(data => {
-            afficheNPoissons(data, number);
+            afficheNPoissons(data, number, 5, 0); //n'ffiche que les 5 premiers résultats sur la 1ère page
             // afficheCarousel(data));
         })
         .catch(function () {
@@ -23,7 +23,7 @@ function apiJQuery(nombre) {
         dataType: "json",
     })
         .done(function (response) {
-            afficheNPoissons(response, number);
+            afficheNPoissons(response, number, 5,0);
             // afficheCarousel(response);
         })
         .fail(function (error) {
@@ -84,16 +84,36 @@ function affichePoisson(json) {
 }
 
 
-//affichage de n cartes descriptif poisson en vanilla JS :
-function afficheNPoissons(jsonDatas, nombre) {
+//affichage de n cartes descriptif poisson en vanilla JS
+//ajout d'une fonctionnalité qui fait qu'il n'y a que x cartes affichées par page, à partir du ieme numero dans le json
+function afficheNPoissons(jsonDatas, nombre, x, numero) {
     for (let i in jsonDatas) {
         let jsonPoisson = jsonDatas[i];
         affichePoisson(jsonPoisson);
         //attention, ne fonctionne pas avec 3 égal, laisser avec 2.
-        if (i == nombre) {
+        if ((i == nombre)||(i==x)) {
             break;
         }
     }
+    document.querySelectorAll(".menuPages").remove();
+    const pagesSuivPrec = document.createElement('div').className="menuPages";
+    const pagesPrec = document.createElement('button').className="IndicPagePrec PagesButton";
+    const pagesSuiv = document.createElement('button').className="IndicPageSuiv PagesButton";
+    if(numero!==0){
+        document.querySelector('.IndicPagePrec').innerHTML ="page precedente";
+        pagesSuivPrec.appendChild(pagesPrec);
+        console.log("passage A");
+    }
+    if (numero<(jsonDatas.length-x)){
+        document.querySelector('.IndicPageSuiv').innerHTML ="page suivante";
+        pagesSuivPrec.appendChild(pagesSuiv);
+        console.log("passage B");
+    }
+    document.getElementById("ajax").append(pagesSuivPrec);
+    document.querySelectorAll('.PagesButton').onclick=function(){
+        afficheNPoissons(jsonDatas, nombre, x, numero+x);
+        console.log("passage C");
+    };
 }
 
 //affichage des images issues de l'API dans le carousel :
