@@ -2,14 +2,19 @@
 function apiVanilla(nombre) {
     const number = nombre;
     let url = "https://www.fishwatch.gov/api/species";
-    fetch(url).then(res => res.json())
+    fetch(url).then(function (res) {
+        // console.log("res",res) //représente la réponse avec 2 attributs : body et headers. Donc ces attributs de headers : status et statusText
+        // console.log("res.json",res.json()) //représente la promesse, avec en attribut value les objets récupérés dans l'API
+        return res.json()
+    })
         .then(data => {
-            afficheNPoissons(data, number, 5, 0); //n'ffiche que les 5 premiers résultats sur la 1ère page
+            afficheNPoissons(data, number, 2, 0); //n'affiche qu'un nombre de x objets sur la 1ère page, à partir du ième numéro de la BDD
             // afficheCarousel(data));
         })
-        .catch(function () {
+        .catch(function (error) {
+            console.log("error", error);
             let msg = document.createElement("p");
-            msg.innerHTML = "Il y a eu un problème avec votre API";
+            msg.innerHTML = "Il y a eu un problème avec votre API :" + error.message;
             document.getElementById("errorAPI").append(msg);
         });
 }
@@ -23,7 +28,7 @@ function apiJQuery(nombre) {
         dataType: "json",
     })
         .done(function (response) {
-            afficheNPoissons(response, number, 5,0);
+            afficheNPoissons(response, number, 2, 0);
             // afficheCarousel(response);
         })
         .fail(function (error) {
@@ -87,33 +92,52 @@ function affichePoisson(json) {
 //affichage de n cartes descriptif poisson en vanilla JS
 //ajout d'une fonctionnalité qui fait qu'il n'y a que x cartes affichées par page, à partir du ieme numero dans le json
 function afficheNPoissons(jsonDatas, nombre, x, numero) {
+    previousFishDelete()
     for (let i in jsonDatas) {
-        let jsonPoisson = jsonDatas[i];
+        let jsonPoisson = jsonDatas[parseInt(i + numero)]; //parseInt permet de conserver en tant qu'entier
         affichePoisson(jsonPoisson);
         //attention, ne fonctionne pas avec 3 égal, laisser avec 2.
-        if ((i == nombre)||(i==x)) {
+        if ((i == nombre) || (i == x)) {
             break;
         }
     }
-    document.querySelectorAll(".menuPages").remove();
-    const pagesSuivPrec = document.createElement('div').className="menuPages";
-    const pagesPrec = document.createElement('button').className="IndicPagePrec PagesButton";
-    const pagesSuiv = document.createElement('button').className="IndicPageSuiv PagesButton";
-    if(numero!==0){
-        document.querySelector('.IndicPagePrec').innerHTML ="page precedente";
+    //affichage uniquement de x posts par page - création de boutons pages précédente / suivante:
+    if (document.querySelector(".menuPages") != null) {
+        document.querySelector(".menuPages").remove();
+    }
+    const pagesSuivPrec = document.createElement('div')
+    pagesSuivPrec.className = "menuPages";
+
+    if (numero !== 0) {
+        const pagesPrec = document.createElement('button')
+        pagesPrec.className = "indicPagePrec"
+        pagesPrec.classList.add("pagesButton")
+        pagesPrec.innerHTML = "page precedente";
+        console.log(pagesPrec)
         pagesSuivPrec.appendChild(pagesPrec);
-        console.log("passage A");
     }
-    if (numero<(jsonDatas.length-x)){
-        document.querySelector('.IndicPageSuiv').innerHTML ="page suivante";
+    if (numero < (jsonDatas.length - x)) {
+        const pagesSuiv = document.createElement('button')
+        pagesSuiv.className = "indicPageSuiv "
+        pagesSuiv.classList.add("pagesButton");
+        pagesSuiv.innerHTML = "page suivante";
         pagesSuivPrec.appendChild(pagesSuiv);
-        console.log("passage B");
     }
-    document.getElementById("ajax").append(pagesSuivPrec);
-    document.querySelectorAll('.PagesButton').onclick=function(){
-        afficheNPoissons(jsonDatas, nombre, x, numero+x);
-        console.log("passage C");
-    };
+    document.querySelector(".feeder").append(pagesSuivPrec);
+    if (document.querySelector('.indicPagePrec') != null) {
+        document.querySelector('.indicPagePrec').onclick = function () {
+            if ((numero - x) >= 0) {
+                afficheNPoissons(jsonDatas, nombre, x, numero - x);
+            } else {
+                afficheNPoissons(jsonDatas, nombre, x, 0);
+            }
+        }
+    }
+    if (document.querySelector('.indicPageSuiv') != null) {
+        document.querySelector('.indicPageSuiv').onclick = function () {
+            afficheNPoissons(jsonDatas, nombre, x, numero + x);
+        }
+    }
 }
 
 //affichage des images issues de l'API dans le carousel :
@@ -196,12 +220,12 @@ function createFish() {
 
 //vérifie les champs du formulaire "fishAddForm" et renvoie une string avec le message d'erreur.
 function validateForm() {
-    let msg="";
-    if (document.getElementById("name").value.length==0) {
-       msg+="Le champ Nom du Poisson ne doit pas être vide."
+    let msg = "";
+    if (document.getElementById("name").value.length == 0) {
+        msg += "Le champ Nom du Poisson ne doit pas être vide."
     }
-    if (document.getElementById("description").value.length==0) {
-        msg+="Le champ Description du Poisson ne doit pas être vide."
+    if (document.getElementById("description").value.length == 0) {
+        msg += "Le champ Description du Poisson ne doit pas être vide."
     }
     return msg;
 }

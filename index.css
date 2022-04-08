@@ -214,6 +214,14 @@ margin-top:20px;
     padding: 5px;
 }
 
+.pagesButton{
+    margin-inline:10px;
+    background-color:midnightblue;
+    color:white;
+    font-size:16px;
+    padding: 5px;
+}
+
 @media screen and (max-width:700px) {
     h1{
         display:none;
