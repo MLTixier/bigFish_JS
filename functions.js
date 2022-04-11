@@ -7,7 +7,7 @@ function apiVanilla() {
         return res.json()
     })
         .then(data => {
-            const i = iUpdate;
+            const i = iUpdate();
             afficheNPoissons(data, i); //n'affiche qu'un nombre de x objets sur la 1ère page, à partir du ième numéro de la BDD
             // afficheCarousel(data));
         })
@@ -86,15 +86,20 @@ function affichePoisson(json) {
     // $("#ajax").append(fishCard);
 
     //méthode en vanilla JS :
-    document.getElementById("ajax").appendChild(fishCard);
+
+    const ancre = document.querySelector("#ajax")
+    ancre.appendChild(fishCard);
     //marqueur qui indique qu'on a affiché au moins poisson depuis l'API sur la page
-    appelApi = true;
 }
 
 //affichage de n cartes descriptif poisson en vanilla JS
 //ajout d'une fonctionnalité qui fait qu'il n'y a que x cartes affichées par page, à partir du ieme indice dans le json
 function afficheNPoissons(jsonDatas, indice) {
+    console.log("1", document.querySelector(".feeder"))
+    console.log("2", document.querySelector("#ajax"))
     previousFishDelete()
+    console.log("3", document.querySelector(".feeder"))
+    console.log("4", document.querySelector("#ajax"))
     const x = xUpdate()
 
     //ajout d'une balise cachée portant l'indice du 1er poisson affiché de la page
@@ -109,6 +114,7 @@ function afficheNPoissons(jsonDatas, indice) {
         if (((indice + i)==jsonDatas.length) || (i == x)) {  //attention, ne fonctionne pas avec 3 égal, laisser avec 2.
             break;
         }
+        console.log("indice json souhaite dans afficheNpoissons : ", parseInt(indice + i))
         let jsonPoisson = jsonDatas[parseInt(indice + i)]; //parseInt permet de conserver en tant qu'entier
         affichePoisson(jsonPoisson);
     }
@@ -137,7 +143,9 @@ function afficheNPoissons(jsonDatas, indice) {
         pagesSuiv.innerHTML = "page suivante";
         pagesSuivPrec.appendChild(pagesSuiv);
     }
-    document.querySelector(".feeder").append(pagesSuivPrec);
+
+    const ancre = document.querySelector(".feeder");
+    ancre.append(pagesSuivPrec);
 
     //fonctionnalité des boutons pages prec et pages suiv : affiche les pages suiv ou prec
     x = xUpdate();
@@ -219,9 +227,7 @@ function search() {
 
 //réaffiche toutes les cartes poissons au clic sur le picto refresh en vanilla JS, à partir de l'indice précédemment affiché et avec éventuellement nouvelle valeur de x=nbPPP :
 function fishRefresh() {
-    previousFishDelete()
-    let i = iUpdate()
-    apiVanilla("tous",i);
+    apiVanilla();
 }
 
 //efface toutes les cartes poissons précédemment affichées
@@ -273,7 +279,7 @@ function xUpdate(){
         x = 2
     }
     xInput.placeholder = x;
-    console.log("appel de xUpdate, valeur de x : " , x)
+    // console.log("appel de xUpdate, valeur de x : " , x)
     return x;
 }
 
@@ -283,6 +289,6 @@ function iUpdate(){
     if (document.querySelector(".iValue")!=null) {
         const iValue = document.querySelector(".iValue")
     }
-    console.log("appel de iUpdate, valeur de i : " , i)
+    // console.log("appel de iUpdate, valeur de i : " , i)
     return i;
 }
