@@ -1,7 +1,5 @@
-// fonction affiche n poissons de l'API en vanilla JS :
-function apiVanilla(nombre,x) {
-    const number = nombre;
-    const y = x;
+// fonction affiche n poissons de l'API en vanilla JS à partir du ième élément de l'API :
+function apiVanilla() {
     let url = "https://www.fishwatch.gov/api/species";
     fetch(url).then(function (res) {
         // console.log("res",res) //représente la réponse avec 2 attributs : body et headers. Donc ces attributs de headers : status et statusText
@@ -9,7 +7,8 @@ function apiVanilla(nombre,x) {
         return res.json()
     })
         .then(data => {
-            afficheNPoissons(data, number, y, 0); //n'affiche qu'un nombre de y objets sur la 1ère page, à partir du ième numéro de la BDD
+            const i = iUpdate;
+            afficheNPoissons(data, i); //n'affiche qu'un nombre de x objets sur la 1ère page, à partir du ième numéro de la BDD
             // afficheCarousel(data));
         })
         .catch(function (error) {
@@ -20,23 +19,23 @@ function apiVanilla(nombre,x) {
         });
 }
 
-// fonction affiche n poissons de l'API en jQuery :
-function apiJQuery(nombre,x) {
-    const number = nombre;
-    const y = x ;
-    $.ajax({
-        url: "https://www.fishwatch.gov/api/species",
-        method: "GET",
-        dataType: "json",
-    })
-        .done(function (response) {
-            afficheNPoissons(response, number, y, 0);
-            // afficheCarousel(response);
-        })
-        .fail(function (error) {
-            alert("La requête effectuée à l'API s'est terminée en échec. Infos : " + JSON.stringify(error));
-        })
-}
+// // fonction affiche n poissons de l'API en jQuery : attention modifier les paramètres
+// function apiJQuery(nombre) {
+//     const number = nombre;
+//     const y = xUpdate();
+//     $.ajax({
+//         url: "https://www.fishwatch.gov/api/species",
+//         method: "GET",
+//         dataType: "json",
+//     })
+//         .done(function (response) {
+//             afficheNPoissons(response, number, 0);
+//             // afficheCarousel(response);
+//         })
+//         .fail(function (error) {
+//             alert("La requête effectuée à l'API s'est terminée en échec. Infos : " + JSON.stringify(error));
+//         })
+// }
 
 //affichage d'une carte descriptif poisson - en vanilla JS :
 function affichePoisson(json) {
@@ -88,37 +87,50 @@ function affichePoisson(json) {
 
     //méthode en vanilla JS :
     document.getElementById("ajax").appendChild(fishCard);
+    //marqueur qui indique qu'on a affiché au moins poisson depuis l'API sur la page
+    appelApi = true;
 }
 
-
 //affichage de n cartes descriptif poisson en vanilla JS
-//ajout d'une fonctionnalité qui fait qu'il n'y a que x cartes affichées par page, à partir du ieme numero dans le json
-function afficheNPoissons(jsonDatas, nombre, x, numero) {
+//ajout d'une fonctionnalité qui fait qu'il n'y a que x cartes affichées par page, à partir du ieme indice dans le json
+function afficheNPoissons(jsonDatas, indice) {
     previousFishDelete()
+    const x = xUpdate()
+
+    //ajout d'une balise cachée portant l'indice du 1er poisson affiché de la page
+    const iValue = document.createElement("input")
+    iValue.type="hidden"
+    iValue.classList.add("iValue")
+    iValue.value = indice
+    const feeder=document.querySelector(".feeder")
+    iValue.prepend(feeder);
+
     for (let i in jsonDatas) {
-        let jsonPoisson = jsonDatas[parseInt(i + numero)]; //parseInt permet de conserver en tant qu'entier
-        affichePoisson(jsonPoisson);
-        //attention, ne fonctionne pas avec 3 égal, laisser avec 2.
-        if ((i == nombre) || (i == x)) {
+        if (((indice + i)==jsonDatas.length) || (i == x)) {  //attention, ne fonctionne pas avec 3 égal, laisser avec 2.
             break;
         }
+        let jsonPoisson = jsonDatas[parseInt(indice + i)]; //parseInt permet de conserver en tant qu'entier
+        affichePoisson(jsonPoisson);
     }
-    //affichage uniquement de x posts par page - création de boutons pages précédente / suivante:
+
+    //création d'un menu avec boutons pages suiv / pages prec adapté en fonction de où on en est
     if (document.querySelector(".menuPages") != null) {
         document.querySelector(".menuPages").remove();
     }
     const pagesSuivPrec = document.createElement('div')
     pagesSuivPrec.className = "menuPages";
 
-    if (numero !== 0) {
+    //si il y a des pages précédentes à afficher, création du bouton pages Prec :
+    if (indice !== 0) {
         const pagesPrec = document.createElement('button')
         pagesPrec.className = "indicPagePrec"
         pagesPrec.classList.add("pagesButton")
         pagesPrec.innerHTML = "page precedente";
-        console.log(pagesPrec)
         pagesSuivPrec.appendChild(pagesPrec);
     }
-    if (numero < (jsonDatas.length - x)) {
+
+    //si il y a des pages suivantes à afficher, création du bouton pages Suiv :
+    if (indice < (jsonDatas.length - x)) {
         const pagesSuiv = document.createElement('button')
         pagesSuiv.className = "indicPageSuiv "
         pagesSuiv.classList.add("pagesButton");
@@ -126,18 +138,22 @@ function afficheNPoissons(jsonDatas, nombre, x, numero) {
         pagesSuivPrec.appendChild(pagesSuiv);
     }
     document.querySelector(".feeder").append(pagesSuivPrec);
+
+    //fonctionnalité des boutons pages prec et pages suiv : affiche les pages suiv ou prec
+    x = xUpdate();
     if (document.querySelector('.indicPagePrec') != null) {
         document.querySelector('.indicPagePrec').onclick = function () {
-            if ((numero - x) >= 0) {
-                afficheNPoissons(jsonDatas, nombre, x, numero - x);
+            //pour ne pas demander un indice du dataJson en-dessous de zero :
+            if ((indice - x) >= 0) {
+                afficheNPoissons(jsonDatas, indice - x);
             } else {
-                afficheNPoissons(jsonDatas, nombre, x, 0);
+                afficheNPoissons(jsonDatas,  0);
             }
         }
     }
     if (document.querySelector('.indicPageSuiv') != null) {
         document.querySelector('.indicPageSuiv').onclick = function () {
-            afficheNPoissons(jsonDatas, nombre, x, numero + x);
+            afficheNPoissons(jsonDatas, indice + x);
         }
     }
 }
@@ -171,31 +187,41 @@ function show() {
 function search() {
     const url = "https://www.fishwatch.gov/api/species";
     fetch(url).then(res => res.json()).then(data => {
-        let x = document.getElementById("search-request").value;
+        let recherche = document.getElementById("search-request").value;
         let trouve = false;
         previousFishDelete()
         for (let json of data) {
-            if (json["Species Name"].toLowerCase().includes(x.toLowerCase())) {
+            if (json["Species Name"].toLowerCase().includes(recherche.toLowerCase())) {
                 affichePoisson(json);
                 trouve = true;
+                //supprime les éventuels anciens messages d'ereur de recherche
+                if(document.querySelector(".search-error")!=null){
+                    let previousMsg = document.querySelector(".search-error")
+                        previousMsg.remove()
+                }
+                //affiche un message de succès :
+                let succesmsg = document.createElement("span");
+                succesmsg.innerHTML = "Résultat de votre recherche :";
+                let searchbar = document.getElementById("search-msg");
+                succesmsg.className = 'search-error';
+                searchbar.appendChild(succesmsg);
             }
         }
         if (trouve == false) {
-            let errormsg = document.createElement("p");
+            let errormsg = document.createElement("span");
             errormsg.innerHTML = "la recherche ne correspond à aucun poisson de notre base de données";
-            let ajax = document.getElementById("ajax");
+            let searchbar = document.getElementById("search-msg");
             errormsg.className = 'search-error';
-            ajax.prepend(errormsg);
+            searchbar.appendChild(errormsg);
         }
     });
-
 }
 
-//affiche toutes les cartes poissons au clic sur le picto refresh en vanilla JS :
+//réaffiche toutes les cartes poissons au clic sur le picto refresh en vanilla JS, à partir de l'indice précédemment affiché et avec éventuellement nouvelle valeur de x=nbPPP :
 function fishRefresh() {
     previousFishDelete()
-    let x = document.getElementById("nbPoissonsParPage").placeholder;
-    apiVanilla("tous",x);
+    let i = iUpdate()
+    apiVanilla("tous",i);
 }
 
 //efface toutes les cartes poissons précédemment affichées
@@ -204,10 +230,14 @@ function previousFishDelete() {
         let title = document.getElementById("arrivage-title");
         title.remove();
     }
-    let liste = document.getElementById("ajax");
-    while (liste.firstChild) {
-        liste.removeChild(liste.firstChild);
+    if ((document.getElementById("ajax")) != null) {
+        let liste = document.getElementById("ajax");
+        while (liste.firstChild) {
+            liste.removeChild(liste.firstChild);
+        }
     }
+    //marqueur indiquant qu'aucun poisson venant de l'API est affiché sur la page
+    appelApi = false;
 }
 
 //créée une carte poisson avec les champs du formulaire "fishAddForm" au clic sur le bouton.
@@ -231,4 +261,28 @@ function validateForm() {
         msg += "Le champ Description du Poisson ne doit pas être vide."
     }
     return msg;
+}
+
+//fonction qui retourne la valeur de x (nb poissons par page à afficher) et met cette valeur en placeholder dans l'input
+function xUpdate(){
+    let x=0;
+    const xInput = document.getElementById("nbPPP")
+    if (xInput.value!=0){
+        x = xInput.value
+    }else{
+        x = 2
+    }
+    xInput.placeholder = x;
+    console.log("appel de xUpdate, valeur de x : " , x)
+    return x;
+}
+
+//fonction qui retourne la valeur de i (indice dans jsondata  du 1er poisson affiché sur la page)
+function iUpdate(){
+    let i=0;
+    if (document.querySelector(".iValue")!=null) {
+        const iValue = document.querySelector(".iValue")
+    }
+    console.log("appel de iUpdate, valeur de i : " , i)
+    return i;
 }

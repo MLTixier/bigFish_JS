@@ -79,12 +79,12 @@ h1{
 h2{
     color:midnightblue;
     text-align:center;
-    margin : 15px;
+    margin-top : 55px;
+    margin-bottom : 20px;
 }
 
 .feeder {
     width: 70%;
-    padding:20px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -221,6 +221,19 @@ margin-top:20px;
     font-size:16px;
     padding: 5px;
 }
+
+.nbPPP{
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+}
+
+.nbPPP input{
+    margin-inline:10px;
+    font-size: 18px;
+    width : 50px;
+}
+
 
 @media screen and (max-width:700px) {
     h1{

@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="carousel.css"/>
     <!--    site sans Bootstrap -->
     <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-    <script src="functions.js" defer></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
-    <!--    pour utiliser le code en jQuery, appeler scriptJQuery.js, sinon scriptVanilla.js.-->
-    <!--    <script src="scriptJQuery.js"></script>-->
-    <script src="scriptVanilla.js" defer></script>
-    <script src="carousel.js" defer></script>
 
+<!--    &lt;!&ndash;    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>&ndash;&gt;-->
+<!--    <script src="functions.js" defer></script>-->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>-->
+<!--    &lt;!&ndash;    pour utiliser le code en jQuery, appeler scriptJQuery.js, sinon scriptVanilla.js.&ndash;&gt;-->
+<!--    &lt;!&ndash;    <script src="scriptJQuery.js"></script>&ndash;&gt;-->
+<!--    <script src="scriptVanilla.js" defer></script>-->
+<!--    <script src="carousel.js" defer></script>-->
 
 </head>
 
@@ -60,17 +60,19 @@
         <div class="gallery-controls"></div>
     </div>
 
-    <div class="feeder">
-        <!--barre de recherche du feeder-->
-        <div class="searchbar">
-            <input type="text" placeholder="Rechercher" id="search-request"/>
-            <button id="submit-search" type="submit" onclick="search()">
-                <img src="images/searchLogo.png" alt="search" width="20px" class="picto-search">
-            </button>
-        </div>
+    <!--barre de recherche du feeder-->
+    <div class="searchbar">
+        <input type="text" placeholder="Rechercher" id="search-request"/>
+        <button id="submit-search" type="button">
+            <img src="images/searchLogo.png" alt="search" width="20px" class="picto-search">
+        </button>
+    </div>
+    <div id="search-msg"></div>
 
-        <!--   En-tête du feeder-->
-        <h2 id="arrivage-title">Découvrez mes derniers arrivages...</h2>
+    <!--   En-tête du feeder-->
+    <h2 id="arrivage-title">Découvrez notre dernier arrivage...</h2>
+
+    <div class="feeder">
 
         <!--   Feeder en "dur"-->
         <div id="ajax">
@@ -85,25 +87,35 @@
             </span>
 
                 <p class="fish-description"><p style='font-weight:bold'> Description physique : </p></br>Ce poisson nous vient de Lorem ipsum dolor sit amet. Ea dignissimos
-                    assumenda ut
-                    nostrum ipsum id incidunt ipsa. At eveniet enim ad doloribus asperiores sit temporibus quos eos
-                    minus
-                    eligendi ut inventore nesciunt a assumenda vero. Qui consequatur quia nam eligendi minus nam quia
-                    officiis. Est sunt quis eos internos quia ut laborum nobis sed temporibus unde in quidem porro. </p>
+                assumenda ut
+                nostrum ipsum id incidunt ipsa. At eveniet enim ad doloribus asperiores sit temporibus quos eos
+                minus
+                eligendi ut inventore nesciunt a assumenda vero. Qui consequatur quia nam eligendi minus nam quia
+                officiis. Est sunt quis eos internos quia ut laborum nobis sed temporibus unde in quidem porro. </p>
             </div>
         </div>
 
     </div>
 
-    <h2 id=refresh-title">Rafraichissez pour voir tous mes beaux poissons !</h2>
+
+    <!--    Rafraichit l'affichage des poissons-->
+    <h2>...ou cliquez ici pour voir tous nos poissons :</h2>
     <div class="picto-refresh">
-        <img id="refresh" src="images/refresh.png" alt="refresh" width="40px;" onclick="fishRefresh()">
+        <button type="button" onclick="fishRefresh()">
+            <img id="refresh" src="images/refresh.png" alt="refresh" width="40px;">
+        </button>
     </div>
 
-    <label>Combien de poissons voulez-vous voir par page ?</label>
-    <input type="number" id="nbPoissonsParPage">
 
-    <h2>Ajoutez un nouveau poisson manuellement :</h2>
+<!--    Affichage des pages précédentes / suivantes et choix x = nb de Poissons Par Page-->
+    <div class="nbPPP">
+        <label>Combien de poissons voulez-vous voir par page ?</label>
+        <input type="number" id="nbPPP">
+        <button type="button" id="submitNbPPP" class="pagesButton">Modifier</button>
+    </div>
+
+
+    <h2>...ou encore...ajoutez un nouveau poisson :</h2>
     <div class="form">
         <div>
             <label >Nom du poisson : </label>
@@ -127,5 +139,13 @@
     <p>Copyright 2022</p>
 </footer>
 </body>
+
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<script src="functions.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
+<!--    pour utiliser le code en jQuery, appeler scriptJQuery.js, sinon scriptVanilla.js.-->
+<!--    <script src="scriptJQuery.js"></script>-->
+<script src="scriptVanilla.js" ></script>
+<script src="carousel.js" ></script>
 
 </html>
