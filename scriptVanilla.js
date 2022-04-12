@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     apiVanilla()
 
     const xClick = document.getElementById("submitNbPPP")
-    xClick.addEventListener('click', function () {
+    xClick.addEventListener('click', function(){
         apiVanilla()
     });
 

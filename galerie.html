@@ -11,13 +11,13 @@
 <body>
 <header>
     <div class="header-div">
-        <img src="images/logo.png" alt="logo" height="60px" width="80px">
+        <a href="/index.html"> <img src="images/logo.png" alt="logo" height="60px" width="80px"></a>
     </div>
     <div class="header-div">
         <h1>Mon bel aquarium</h1>
     </div>
     <div class="header-div">
-        <a href="/index.html"> <img src="images/logo.png" alt="logo" height="60px" width="80px"></a>
+        <img src="images/hamburger.png" alt="menu" height="25px" onclick="show()">
     </div>
 
     <!--    menu déroulant-->
@@ -39,84 +39,17 @@
 
     <!--    pictos galerie -->
     <div class="pictosGalerie">
-        <img class="pictoGalerie" src="images/hamburger.png">
-        <img class="pictoGalerie" src="images/hamburger.png">
-    </div>
-
-    <!--barre de recherche du feeder-->
-    <div class="searchbar">
-        <input type="text" placeholder="Rechercher" id="search-request"/>
-        <button id="submit-search" type="button">
-            <img src="images/searchLogo.png" alt="search" width="20px" class="picto-search">
+        <button type="button" id="displayMosaic">
+            <img  class="pictoGalerie" src="images/mosaicLogo.png" width="100px">
         </button>
-    </div>
-    <div id="search-msg"></div>
-
-    <!--   En-tête du feeder-->
-    <h2 id="arrivage-title">Découvrez notre dernier arrivage...</h2>
-
-    <div class="feeder">
-
-        <div id="indice"></div>
-
-        <!--   Feeder en "dur"-->
-        <div id="ajax">
-            <div class="fish-card">
-                <h3 class="fish-title">Beau poisson</h3>
-                <img class="fish-image"
-                     src="https://images.rtl.fr/~c/770v513/rtl/www/1294273-un-poisson-clown-illustration.jpg"
-                     alt="photo poisson">
-                <span class="label-list">
-                <label class="fish-label">Wild</label>
-                <label class="fish-label">Farmed</label>
-            </span>
-
-                <p class="fish-description"><p style='font-weight:bold'> Description physique : </p></br>Ce poisson nous vient de Lorem ipsum dolor sit amet. Ea dignissimos
-                assumenda ut
-                nostrum ipsum id incidunt ipsa. At eveniet enim ad doloribus asperiores sit temporibus quos eos
-                minus
-                eligendi ut inventore nesciunt a assumenda vero. Qui consequatur quia nam eligendi minus nam quia
-                officiis. Est sunt quis eos internos quia ut laborum nobis sed temporibus unde in quidem porro. </p>
-            </div>
-        </div>
-
-    </div>
-
-
-    <!--    Rafraichit l'affichage des poissons-->
-    <h2>...ou cliquez ici pour voir tous nos poissons :</h2>
-    <div class="picto-refresh">
-        <button id="refresh" type="button">
-            <img src="images/refresh.png" alt="refresh" width="40px;">
+        <button type=button" id="displayList">
+            <img class="pictoGalerie" src="images/listDisplayLogo.png" width="100px">
         </button>
     </div>
 
+<!--    galerie-->
+    <div id="galerieAncre"></div>
 
-<!--    Affichage des pages précédentes / suivantes et choix x = nb de Poissons Par Page-->
-    <div class="nbPPP">
-        <label>Combien de poissons voulez-vous voir par page ?</label>
-        <input type="number" id="nbPPP">
-        <button type="button" id="submitNbPPP" class="pagesButton">Modifier</button>
-    </div>
-
-
-    <h2>...ou encore...ajoutez un nouveau poisson :</h2>
-    <div class="form">
-        <div>
-            <label >Nom du poisson : </label>
-            <input type="text" id="name">
-        </div>
-        <div>
-            <label >Catégorie du poisson : </label>
-            <input type="text" id="label" placeholder="Farmed / Wild / ...">
-        </div>
-        <div>
-            <label >Description du poisson :</label>
-            <textarea id="description" rows="10" cols="25"></textarea>
-        </div>
-        <button id="submitAddFish" type="button">Créer un poisson</button>
-        <div id="formError"></div>
-    </div>
 
 </main>
 
@@ -126,11 +59,7 @@
 </body>
 
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-<script src="functions.js" ></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
-<!--    pour utiliser le code en jQuery, appeler scriptJQuery.js, sinon scriptVanilla.js.-->
-<!--    <script src="scriptJQuery.js"></script>-->
-<script src="scriptVanilla.js" ></script>
-<script src="carousel.js" ></script>
+<script src="functionsGalerie.js"></script>
+<script src="galerie.js" ></script>
 
 </html>
