@@ -6,10 +6,14 @@ function afficheMosaic(tableau) {
     for (let i in tableau) {
         const blocImage = document.createElement("div");
         blocImage.className = "blocImage";
+        blocImage.id = i ;
         const image = document.createElement("img");
         image.src = tableau[i];
         blocImage.appendChild(image);
         blocMosaic.appendChild(blocImage);
+        blocImage.addEventListener('dblclick', function() {
+            blocImage.remove()
+        })
     }
     const ancreImage = document.getElementById("galerieAncre")
     ancreImage.appendChild(blocMosaic);
@@ -23,10 +27,14 @@ function afficheList(tableau) {
     for (let i in tableau) {
         const blocImage = document.createElement("div");
         blocImage.className = "blocImage";
+        blocImage.id = i ;
         const image = document.createElement("img");
         image.src = tableau[i];
         blocImage.appendChild(image);
         blocList.appendChild(blocImage);
+        blocImage.addEventListener('dblclick', function() {
+            blocImage.remove()
+        })
     }
     const ancreImage = document.getElementById("galerieAncre")
     ancreImage.appendChild(blocList);
@@ -42,4 +50,15 @@ function deleteImages() {
     }
 }
 
-//affiche le questionnaire pour ajouter une image
+//affiche l'image donnée par l'utilisateur
+// function addImage(file){
+// const blocMosaic = document.querySelector(".blocMosaic");
+// const blocImage = document.createElement("div");
+// blocImage.className = "blocImage";
+// const image = document.createElement("img");
+// image.src = file;
+// blocImage.appendChild(image);
+// blocMosaic.appendChild(blocImage);
+// const ancreImage = document.getElementById("galerieAncre")
+// ancreImage.appendChild(blocMosaic);
+// }

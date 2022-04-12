@@ -33,10 +33,24 @@ window.addEventListener("DOMContentLoaded", (event) => {
         pictoListe.style.backgroundColor = "cadetblue";
     })
 
-    const pictoAdd = document.getElementById("addImageMenu")
-    pictoAdd.addEventListener('click', function() {
-        afficheMenu()
-    })
+    const pictoAdd = document.getElementById("newImage")
+    pictoAdd.addEventListener('change', function() {
+        const reader = new FileReader();
+        console.log(reader)
+        reader.addEventListener("load", () => {
+            const uploaded_image = reader.result;
+            //créer une balise <img>, avec comme attribut src = uploaded_image
+            //ou fonction ci-dessous:
+            tableauImages.push(uploaded_image)
+            if (document.querySelector(".blocList") != null) {
+                afficheList(tableauImages)
+            }
+           if (document.querySelector(".blocMosaic") != null) {
+               afficheMosaic(tableauImages)
+            }
+        });
+        reader.readAsDataURL(this.files[0])
+    });
 
 });
 
