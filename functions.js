@@ -86,7 +86,7 @@ function affichePoisson(json) {
     //méthode en vanilla JS :
     const ancre = document.querySelector("#ajax")
     ancre.appendChild(fishCard);
-    console.log("fin affichePoisson")
+    // console.log("fin affichePoisson")
 }
 
 //affichage de n cartes descriptif poisson en vanilla JS
@@ -94,7 +94,7 @@ function affichePoisson(json) {
 function afficheNPoissons(jsonDatas, indice) {
     previousFishDelete()
     const x = xUpdate()
-    console.log("debut afficheNPoissons, indice : ", indice, ", x : ", x)
+    // console.log("debut afficheNPoissons, indice : ", indice, ", x : ", x)
 
     //ajout d'une balise cachée portant l'indice du 1er poisson affiché de la page
     let iValue=""
@@ -117,7 +117,7 @@ function afficheNPoissons(jsonDatas, indice) {
         // console.log("indice json souhaite dans afficheNpoissons : ", parseInt(indice + i))
         let jsonPoisson = jsonDatas[parseInt(indice) + parseInt(i)]; //parseInt permet de conserver en tant qu'entier
         affichePoisson(jsonPoisson);
-        console.log("passage dans boucle jsonDatas")
+        // console.log("passage dans boucle jsonDatas")
     }
 
     //création d'un menu avec boutons pages suiv / pages prec adapté en fonction de où on en est

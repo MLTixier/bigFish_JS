@@ -1,42 +1,31 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>bigFish</title>
+    <title>bigFish-Galerie</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="carousel.css"/>
-    <!--    site sans Bootstrap -->
-    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
-
-    <!--    &lt;!&ndash;    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>&ndash;&gt;-->
-    <!--    <script src="functions.js" defer></script>-->
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>-->
-    <!--    &lt;!&ndash;    pour utiliser le code en jQuery, appeler scriptJQuery.js, sinon scriptVanilla.js.&ndash;&gt;-->
-    <!--    &lt;!&ndash;    <script src="scriptJQuery.js"></script>&ndash;&gt;-->
-    <!--    <script src="scriptVanilla.js" defer></script>-->
-    <!--    <script src="carousel.js" defer></script>-->
-
 </head>
 
 <body>
 <header>
     <div class="header-div">
+        <img src="images/logo.png" alt="logo" height="60px" width="80px">
+    </div>
+    <div class="header-div">
+        <h1>Mon bel aquarium</h1>
+    </div>
+    <div class="header-div">
         <a href="/index.html"> <img src="images/logo.png" alt="logo" height="60px" width="80px"></a>
-    </div>
-    <div class="header-div">
-        <h1>Bienvenue sur Big Fish !</h1>
-    </div>
-    <div class="header-div">
-        <img src="images/hamburger.png" alt="menu" height="25px" onclick="show()">
     </div>
 
     <!--    menu déroulant-->
     <nav id="topdown-menu" class="hidden">
         <ul>
-            <li><a href="">page d'accueil</a></li>
+            <li><a href="/index.html">page d'accueil</a></li>
             <hr>
-            <li><a href="/galerie.html">galerie</a></li>
+            <li><a href="">galerie</a></li>
             <hr>
             <li><a href="">contact</a></li>
         </ul>
@@ -48,18 +37,20 @@
     <!--message d'erreur optionnel si bug lors de l'API-->
     <p id="errorAPI"></p>
 
-    <!--    Carrousel-->
-    <div class="gallery">
-        <div class="gallery-container">
-            <img class="gallery-item" src="images/poisson3.jpg">
-            <img class="gallery-item" src="images/poisson4.jpg">
-            <img class="gallery-item" src="images/poisson7.jpg">
-            <img class="gallery-item" src="images/poisson6.jpg">
-            <img class="gallery-item" src="images/poisson5.jpg">
-            <img class="gallery-item" src="images/poisson8.jpg">
-        </div>
-        <div class="gallery-controls"></div>
+    <!--    pictos galerie -->
+    <div class="pictosGalerie">
+        <img class="pictoGalerie" src="images/hamburger.png">
+        <img class="pictoGalerie" src="images/hamburger.png">
     </div>
+
+    <!--barre de recherche du feeder-->
+    <div class="searchbar">
+        <input type="text" placeholder="Rechercher" id="search-request"/>
+        <button id="submit-search" type="button">
+            <img src="images/searchLogo.png" alt="search" width="20px" class="picto-search">
+        </button>
+    </div>
+    <div id="search-msg"></div>
 
     <!--   En-tête du feeder-->
     <h2 id="arrivage-title">Découvrez notre dernier arrivage...</h2>
@@ -80,9 +71,7 @@
                 <label class="fish-label">Farmed</label>
             </span>
 
-                <p class="fish-description">
-                <p style='font-weight:bold'> Description physique : </p></br>Ce poisson nous vient de Lorem ipsum dolor
-                sit amet. Ea dignissimos
+                <p class="fish-description"><p style='font-weight:bold'> Description physique : </p></br>Ce poisson nous vient de Lorem ipsum dolor sit amet. Ea dignissimos
                 assumenda ut
                 nostrum ipsum id incidunt ipsa. At eveniet enim ad doloribus asperiores sit temporibus quos eos
                 minus
@@ -103,7 +92,7 @@
     </div>
 
 
-    <!--    Affichage des pages précédentes / suivantes et choix x = nb de Poissons Par Page-->
+<!--    Affichage des pages précédentes / suivantes et choix x = nb de Poissons Par Page-->
     <div class="nbPPP">
         <label>Combien de poissons voulez-vous voir par page ?</label>
         <input type="number" id="nbPPP">
@@ -114,15 +103,15 @@
     <h2>...ou encore...ajoutez un nouveau poisson :</h2>
     <div class="form">
         <div>
-            <label>Nom du poisson : </label>
+            <label >Nom du poisson : </label>
             <input type="text" id="name">
         </div>
         <div>
-            <label>Catégorie du poisson : </label>
+            <label >Catégorie du poisson : </label>
             <input type="text" id="label" placeholder="Farmed / Wild / ...">
         </div>
         <div>
-            <label>Description du poisson :</label>
+            <label >Description du poisson :</label>
             <textarea id="description" rows="10" cols="25"></textarea>
         </div>
         <button id="submitAddFish" type="button">Créer un poisson</button>
@@ -137,11 +126,11 @@
 </body>
 
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-<script src="functions.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="functions.js" ></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>
 <!--    pour utiliser le code en jQuery, appeler scriptJQuery.js, sinon scriptVanilla.js.-->
 <!--    <script src="scriptJQuery.js"></script>-->
-<script src="scriptVanilla.js"></script>
-<script src="carousel.js"></script>
+<script src="scriptVanilla.js" ></script>
+<script src="carousel.js" ></script>
 
 </html>

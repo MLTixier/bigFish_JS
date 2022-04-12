@@ -1,7 +1,7 @@
-document.onreadystatechange = function () {
+window.addEventListener("DOMContentLoaded", (event) => {
 
     //définition d'un nombre de poissons à afficher par page par défaut
-    let x=2;
+    let x = 2;
     const xInput = document.getElementById("nbPPP")
     xInput.placeholder = x;
 
@@ -10,35 +10,35 @@ document.onreadystatechange = function () {
     apiVanilla()
 
     const xClick = document.getElementById("submitNbPPP")
-    xClick.addEventListener('click',function(){
+    xClick.addEventListener('click', function () {
         apiVanilla()
     });
 
     const refreshClick = document.getElementById("refresh")
-    refreshClick.addEventListener('click',function(){
+    refreshClick.addEventListener('click', function () {
         apiVanilla()
     });
 
-    const searchClick= document.getElementById("submit-search")
-    searchClick.addEventListener('click',function(){
+    const searchClick = document.getElementById("submit-search")
+    searchClick.addEventListener('click', function () {
         search()
     });
 
-
     const buttonElement = document.getElementById("submitAddFish");
     buttonElement.addEventListener('click', function (event) {
-        document.querySelector("#formError").innerHTML="";
-        if (validateForm()==""){
+        document.querySelector("#formError").innerHTML = "";
+        if (validateForm() == "") {
             createFish();
-        }else{
+        } else {
             let formMsg = document.createElement('p');
-            formMsg.innerHTML= validateForm();
-            formMsg.className="search-error";
+            formMsg.innerHTML = validateForm();
+            formMsg.className = "search-error";
             let ancre = document.querySelector("#formError");
             ancre.appendChild(formMsg);
         }
     });
-};
+
+});
 
 
 
