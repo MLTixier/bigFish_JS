@@ -1,5 +1,6 @@
 // fonction affiche n poissons de l'API en vanilla JS à partir du ième élément de l'API :
 function apiVanilla() {
+    // console.log("apiVanilla debut - indice :", iUpdate())
     let url = "https://www.fishwatch.gov/api/species";
     fetch(url)
         .then(res=>res.json())
@@ -92,16 +93,23 @@ function affichePoisson(json) {
 //affichage de n cartes descriptif poisson en vanilla JS
 //ajout d'une fonctionnalité qui fait qu'il n'y a que x cartes affichées par page, à partir du ieme indice dans le json
 function afficheNPoissons(jsonDatas, indice) {
+    console.log("indice debut afficheNPoissons", indice)
     previousFishDelete()
     const x = xUpdate()
 
     //ajout d'une balise cachée portant l'indice du 1er poisson affiché de la page
-    const iValue = document.createElement("input")
-    iValue.type="hidden"
-    iValue.classList.add("iValue")
+    let iValue=""
+    if (document.querySelector(".iValue")==null){
+        iValue = document.createElement("input")
+        iValue.type="hidden"
+        iValue.classList.add("iValue")
+    }else{
+        iValue = document.querySelector(".iValue")
+    }
     iValue.value = indice
+    // console.log("iValue.value dans afficheNPoissons", iValue.value)
     const ancreIndice = document.getElementById("indice")
-    ancreIndice.append(iValue);
+    ancreIndice.appendChild(iValue);
 
     for (let i in jsonDatas) {
         if (((indice + i)==jsonDatas.length) || (i==x)) {  //attention, ne fonctionne pas avec 3 égal, laisser avec 2 pour jsonDatas.length.
@@ -145,7 +153,7 @@ function afficheNPoissons(jsonDatas, indice) {
         document.querySelector('.indicPagePrec').onclick = function () {
             //pour ne pas demander un indice du dataJson en-dessous de zero :
             if ((indice - x) >= 0) {
-                afficheNPoissons(jsonDatas, indice - x);
+                afficheNPoissons(jsonDatas,parseInt(indice)-parseInt(x));
             } else {
                 afficheNPoissons(jsonDatas,  0);
             }
@@ -153,7 +161,7 @@ function afficheNPoissons(jsonDatas, indice) {
     }
     if (document.querySelector('.indicPageSuiv') != null) {
         document.querySelector('.indicPageSuiv').onclick = function () {
-            afficheNPoissons(jsonDatas, indice + x);
+            afficheNPoissons(jsonDatas, parseInt(indice)+parseInt(x));
         }
     }
 }
@@ -217,11 +225,6 @@ function search() {
     });
 }
 
-//réaffiche toutes les cartes poissons au clic sur le picto refresh en vanilla JS, à partir de l'indice précédemment affiché et avec éventuellement nouvelle valeur de x=nbPPP :
-function fishRefresh() {
-    apiVanilla();
-}
-
 //efface toutes les cartes poissons précédemment affichées
 function previousFishDelete() {
     if ((document.getElementById("arrivage-title")) != null) {
@@ -240,7 +243,7 @@ function previousFishDelete() {
 
 //créée une carte poisson avec les champs du formulaire "fishAddForm" au clic sur le bouton.
 function createFish() {
-    previousFishDelete();
+    // previousFishDelete();
     const json = {
         "Species Name": document.getElementById("name").value,
         "Physical Description": document.getElementById("description").value,

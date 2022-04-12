@@ -7,11 +7,16 @@ document.onreadystatechange = function () {
 
     //si on veut faire appel à l'API dès le démarrage... sinon il y a uniquement les derniers arrivages, cad le poisson en dur dans HTML
     // affiche x (nb Poissons Par Page) cartes poissons de l'API au chargement de la page :'
-    apiVanilla();
+    apiVanilla()
 
     const xClick = document.getElementById("submitNbPPP")
     xClick.addEventListener('click',function(){
-        xUpdate()
+        apiVanilla()
+    });
+
+    const refreshClick = document.getElementById("refresh")
+    refreshClick.addEventListener('click',function(){
+        apiVanilla()
     });
 
     const searchClick= document.getElementById("submit-search")
