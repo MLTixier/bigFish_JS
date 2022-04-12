@@ -1,8 +1,5 @@
 document.onreadystatechange = function () {
 
-    console.log("a", document.querySelector(".feeder"))
-    console.log("b", document.querySelector("#ajax"))
-
     //définition d'un nombre de poissons à afficher par page par défaut
     let x=2;
     const xInput = document.getElementById("nbPPP")

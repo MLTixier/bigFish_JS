@@ -1,11 +1,8 @@
 // fonction affiche n poissons de l'API en vanilla JS à partir du ième élément de l'API :
 function apiVanilla() {
     let url = "https://www.fishwatch.gov/api/species";
-    fetch(url).then(function (res) {
-        // console.log("res",res) //représente la réponse avec 2 attributs : body et headers. Donc ces attributs de headers : status et statusText
-        // console.log("res.json",res.json()) //représente la promesse, avec en attribut value les objets récupérés dans l'API
-        return res.json()
-    })
+    fetch(url)
+        .then(res=>res.json())
         .then(data => {
             const i = iUpdate();
             afficheNPoissons(data, i); //n'affiche qu'un nombre de x objets sur la 1ère page, à partir du ième numéro de la BDD
@@ -95,11 +92,7 @@ function affichePoisson(json) {
 //affichage de n cartes descriptif poisson en vanilla JS
 //ajout d'une fonctionnalité qui fait qu'il n'y a que x cartes affichées par page, à partir du ieme indice dans le json
 function afficheNPoissons(jsonDatas, indice) {
-    console.log("1", document.querySelector(".feeder"))
-    console.log("2", document.querySelector("#ajax"))
     previousFishDelete()
-    console.log("3", document.querySelector(".feeder"))
-    console.log("4", document.querySelector("#ajax"))
     const x = xUpdate()
 
     //ajout d'une balise cachée portant l'indice du 1er poisson affiché de la page
@@ -107,14 +100,14 @@ function afficheNPoissons(jsonDatas, indice) {
     iValue.type="hidden"
     iValue.classList.add("iValue")
     iValue.value = indice
-    const feeder=document.querySelector(".feeder")
-    iValue.prepend(feeder);
+    const ancreIndice = document.getElementById("indice")
+    ancreIndice.append(iValue);
 
     for (let i in jsonDatas) {
-        if (((indice + i)==jsonDatas.length) || (i == x)) {  //attention, ne fonctionne pas avec 3 égal, laisser avec 2.
+        if (((indice + i)==jsonDatas.length) || (i==x)) {  //attention, ne fonctionne pas avec 3 égal, laisser avec 2 pour jsonDatas.length.
             break;
         }
-        console.log("indice json souhaite dans afficheNpoissons : ", parseInt(indice + i))
+        // console.log("indice json souhaite dans afficheNpoissons : ", parseInt(indice + i))
         let jsonPoisson = jsonDatas[parseInt(indice + i)]; //parseInt permet de conserver en tant qu'entier
         affichePoisson(jsonPoisson);
     }
@@ -147,8 +140,7 @@ function afficheNPoissons(jsonDatas, indice) {
     const ancre = document.querySelector(".feeder");
     ancre.append(pagesSuivPrec);
 
-    //fonctionnalité des boutons pages prec et pages suiv : affiche les pages suiv ou prec
-    x = xUpdate();
+    // fonctionnalité des boutons pages prec et pages suiv : affiche les pages suiv ou prec
     if (document.querySelector('.indicPagePrec') != null) {
         document.querySelector('.indicPagePrec').onclick = function () {
             //pour ne pas demander un indice du dataJson en-dessous de zero :
