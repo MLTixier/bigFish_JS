@@ -1,11 +1,11 @@
-*{
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-body{
-background-color:cadetblue;
+body {
+    background-color: cadetblue;
 }
 
 header {
@@ -18,7 +18,7 @@ header {
     padding: 30px;
 }
 
-main{
+main {
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -28,59 +28,59 @@ main{
 footer {
     color: white;
     background-color: midnightblue;
-    bottom:0;
+    bottom: 0;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width:100%;
+    width: 100%;
     padding: 30px;
 }
 
 .hidden {
-  visibility:hidden;
+    visibility: hidden;
 }
 
 .visible {
-    visibility:visible;
+    visibility: visible;
 }
 
-#topdown-menu{
-    display:flex;
-    position:absolute;
-    top:100px;
-    right : 30px;
-    background-color:white;
-    text:midnightblue;
+#topdown-menu {
+    display: flex;
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    background-color: white;
+    text: midnightblue;
     /*text-align:center;*/
-    padding-inline :20px;
+    padding-inline: 20px;
     z-index: 100;
 }
 
 #topdown-menu hr {
-color:midnightblue;
+    color: midnightblue;
 }
 
 #topdown-menu li {
-list-style:none;
-    padding:10px;
+    list-style: none;
+    padding: 10px;
 }
 
 #topdown-menu a {
-    text-decoration:none;
+    text-decoration: none;
 }
 
 }
 
-h1{
-    font-size:36px;
+h1 {
+    font-size: 36px;
 }
 
-h2{
-    color:midnightblue;
-    text-align:center;
-    margin-top : 55px;
-    margin-bottom : 20px;
+h2 {
+    color: midnightblue;
+    text-align: center;
+    margin-top: 55px;
+    margin-bottom: 20px;
 }
 
 .feeder {
@@ -89,169 +89,230 @@ h2{
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    position:relative;
+    position: relative;
 }
 
-.searchbar{
-display:flex;
+.searchbar {
+    display: flex;
     flex-direction: row;
-    background-color:midnightblue;
-    padding:2px;
-    margin-bottom:30px;
+    background-color: midnightblue;
+    padding: 2px;
+    margin-bottom: 30px;
 }
 
-.searchbar input{
-    font-size:16px;
+.searchbar input {
+    font-size: 16px;
 }
 
-.picto-search{
-    margin : 5px;
+.picto-search {
+    margin: 5px;
 }
 
-#submit-search{
-    background-color:midnightblue;
+#submit-search {
+    background-color: midnightblue;
 }
 
-.search-error{
-    margin : 10px;
-    font-size: 20 px;
+.search-error {
+    margin: 10px;
+    font-size: 20px;
 }
 
-.picto-refresh{
-margin-bottom:10px;
+.picto-refresh {
+    margin-bottom: 10px;
 }
 
-.fish-card{
+.fish-card {
     color: midnightblue;
     width: 100%;
     border: 3px solid midnightblue;
     border-radius: 30px;
-    background-color:white;
-    margin-block:30px;
-    padding:40px;
-    display:flex;
+    background-color: white;
+    margin-block: 30px;
+    padding: 40px;
+    display: flex;
     flex-direction: column;
 }
 
-.fish-image{
-    width:40%;
+.fish-image {
+    width: 40%;
     border: 1px solid black;
-    margin-block:10px;
+    margin-block: 10px;
 }
 
-.label-list{
-    display:flex;
-    flex-direction:row;
+.label-list {
+    display: flex;
+    flex-direction: row;
     justify-content: start;
-    align-items:center;
-    margin-bottom:10px;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.fish-label{
-    background-color:midnightblue;
+.fish-label {
+    background-color: midnightblue;
     color: white;
-    display:flex;
-    margin-right:5px;
-    padding-inline:5px;
-    padding-block:2px;
-    border-radius:3px;
+    display: flex;
+    margin-right: 5px;
+    padding-inline: 5px;
+    padding-block: 2px;
+    border-radius: 3px;
 }
 
 .fish-description {
-margin-top:20px;
-    margin-left:20px;
+    margin-top: 20px;
+    margin-left: 20px;
 }
 
-#errorAPI{
-    color : white;
-    background-color : red ;
-    position : absolute;
-    top : 10%;
-    z-index:200;
+#errorAPI {
+    color: white;
+    background-color: red;
+    position: absolute;
+    top: 10%;
+    z-index: 200;
 }
 
-#errorAPI p{
-    font-size:30px;
-    margin:10px;
-    text-align:center;
+#errorAPI p {
+    font-size: 30px;
+    margin: 10px;
+    text-align: center;
 }
 
-.form{
-    display:flex;
-    flex-direction:column;
-    align-items : flex-end;
-    border:2px solid midnightblue;
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border: 2px solid midnightblue;
     border-radius: 30px;
-    padding : 20px;
+    padding: 20px;
     margin-bottom: 20px;
     width: 36%;
 }
 
 .form label {
-    font-size:18px;
-    font-weight:bold;
+    font-size: 18px;
+    font-weight: bold;
     color: midnightblue;
-    margin-right:20px;
+    margin-right: 20px;
 }
 
-.form input{
-    font-size:16px;
+.form input {
+    font-size: 16px;
 }
 
-.form div{
-    margin:5px;
+.form div {
+    margin: 5px;
     display: flex;
-    flex-direction : row;
-    justify-content : flex-start;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
-#submitAddFish{
-    align-self:center;
-    background-color:midnightblue;
+#submitAddFish {
+    align-self: center;
+    background-color: midnightblue;
     color: white;
-    font-size:16px;
-    margin-top : 10px;
+    font-size: 16px;
+    margin-top: 10px;
     padding: 5px;
 }
 
-.pagesButton{
-    margin-inline:10px;
-    background-color:midnightblue;
-    color:white;
-    font-size:16px;
+.pagesButton {
+    margin-inline: 10px;
+    background-color: midnightblue;
+    color: white;
+    font-size: 16px;
     padding: 5px;
 }
 
-.nbPPP{
-    display:flex;
-    flex-direction:row;
+.nbPPP {
+    display: flex;
+    flex-direction: row;
     align-items: center;
 }
 
-.nbPPP input{
-    margin-inline:10px;
+.nbPPP input {
+    margin-inline: 10px;
     font-size: 18px;
-    width : 50px;
+    width: 50px;
 }
 
+.pictosGalerie {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
 
-@media screen and (max-width:700px) {
-    h1{
-        display:none;
+.pictosGalerie button{
+    background-color:cadetblue;
+    border:black solid 2px;
+    margin: 15px;
+}
+
+#galerieAncre{
+    width: 80%;
+    display:flex;
+    margin:auto;
+}
+
+.blocMosaic{
+    display:flex;
+    justify-content: center;
+    flex-direction:row;
+    flex-wrap:wrap;
+    width: 100%;
+    margin: auto;
+}
+
+.blocList{
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    margin:auto;
+    padding-inline:100px;
+}
+
+.blocImage{
+    border : black solid 2px;
+    display:flex;
+}
+
+.blocMosaic .blocImage{
+    width: 25%;
+    height : 400px;
+    margin:10px;
+}
+
+.blocList .blocImage{
+    width: 100%;
+    margin:20px;
+}
+
+.blocImage img {
+    width: 100%;
+}
+
+@media screen and (max-width: 700px) {
+    h1 {
+        display: none;
     }
+
     .feeder {
         width: 100%;
     }
-    .fish-card{
-        align-items:center;
+
+    .fish-card {
+        align-items: center;
     }
-    .fish-image{
-        width:80%;
+
+    .fish-image {
+        width: 80%;
     }
-    h2{
-        margin-bottom:10px;
+
+    h2 {
+        margin-bottom: 10px;
     }
-    .gallery{
-        display:none;
+
+    .gallery {
+        display: none;
     }
 }

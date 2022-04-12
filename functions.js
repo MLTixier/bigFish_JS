@@ -256,7 +256,7 @@ function createFish() {
 function validateForm() {
     let msg = "";
     if (document.getElementById("name").value.length == 0) {
-        msg += "Le champ Nom du Poisson ne doit pas être vide."
+        msg += "Le champ Nom du Poisson ne doit pas être vide. <br>"
     }
     if (document.getElementById("description").value.length == 0) {
         msg += "Le champ Description du Poisson ne doit pas être vide."
