@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <title>bigFish-Galerie</title>
+    <title>bigFish - jeu</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/index.css">
@@ -14,7 +14,7 @@
         <a href="/index.html"> <img src="images/logo.png" alt="logo" height="60px" width="80px"></a>
     </div>
     <div class="header-div">
-        <h1>Mon bel aquarium</h1>
+        <h1>Jouez à Memory !</h1>
     </div>
     <div class="header-div">
         <img src="images/hamburger.png" alt="menu" height="25px" onclick="show()">
@@ -34,30 +34,11 @@
 
 
 <main>
-    <!--message d'erreur optionnel si bug lors de l'API-->
-    <p id="errorAPI"></p>
 
-    <!--    pictos galerie -->
-    <div class="pictosGalerie">
-        <div>
-            <button type="button" id="displayMosaic">
-                <img class="pictoGalerie" src="images/mosaicLogo.png" width="100px">
-            </button>
-            <button type=button" id="displayList">
-                <img class="pictoGalerie" src="images/listDisplayLogo.png" width="100px">
-            </button>
-        </div>
-        <button type=button" id="addImageMenu">
-            <label for="newImage">
-                <img class="pictoGalerie" src="images/addLogo.png" width="100px">
-            </label>
-            <input hidden type="file" id="newImage" accept=".png, .jpg"></input>
-        </button>
-    </div>
+    <h2>Retournez les cartes (pas plus de 2 en même temps) et ramassez les (avec un double-clic) si elles sont identiques</h2>
 
     <!--    galerie-->
     <div id="galerieAncre"></div>
-
 
 </main>
 
@@ -67,8 +48,12 @@
 </body>
 
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-<script src="scripts/functionsGalerie.js"></script>
 <script src="scripts/functions.js"></script>
-<script src="scripts/galerie.js"></script>
+<script src="scripts/functionsGalerie.js"></script>
+<script src="scripts/functionsGame.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--    pour utiliser le code en jQuery, appeler scriptJQuery.js, sinon scriptVanilla.js.-->
+<!--    <script src="scriptJQuery.js"></script>-->
+<script src="scripts/game.js"></script>
 
 </html>

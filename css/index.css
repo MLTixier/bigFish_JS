@@ -21,8 +21,9 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
+    min-height: 800px;
 }
 
 footer {
@@ -68,8 +69,6 @@ footer {
 
 #topdown-menu a {
     text-decoration: none;
-}
-
 }
 
 h1 {
@@ -261,6 +260,15 @@ h2 {
     margin: auto;
 }
 
+.blocGame{
+    display:flex;
+    justify-content: center;
+    flex-direction:row;
+    flex-wrap:wrap;
+    width: 100%;
+    margin: auto;
+}
+
 .blocList{
     display:flex;
     flex-direction:column;
@@ -280,6 +288,17 @@ h2 {
     width: 25%;
     height : 400px;
     margin:10px;
+}
+
+.blocGame .blocImage{
+    width: 15%;
+    height : 250px;
+    margin:10px;
+    background-color:gray;
+}
+
+.displayGameImage{
+   filter: brightness(0%);
 }
 
 .blocList .blocImage{
